@@ -1,6 +1,9 @@
+.details {
+  margin-top: 25px
+}
 .chart-wrapper {
   position: relative;
-  margin: 50px auto 0 auto;
+  margin: 25px auto 0 auto;
   max-width: 400px;
 }
 #showCaseVal {
@@ -11,4 +14,21 @@
   font-size: 25pt;
   font-weight: bold;
   font-family: sans-serif;
+}
+
+div {
+  font: normal 14px sans-serif;
+}
+h4 {
+  text-align: center;
+  margin: 0 0 5px 0;
+}
+p {
+  margin: 0 0 10px 0;
+  text-align: center
+}
+canvas {
+  max-width: 400px;
+  height: 400px;
+  margin: 0 auto;
 }
