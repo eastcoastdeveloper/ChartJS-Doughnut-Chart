@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input,  OnInit } from '@angular/core';
 import { ChartType, Chart } from 'chart.js';
-import * as data from './data.json';
 
 @Component({
   selector: 'app-doughnut-chart',
@@ -13,6 +12,8 @@ export class DoughnutChartComponent {
   chart:any;
   showcaseVal:number;
 
+  @Input() jsonArray:any;
+
   ngAfterViewInit() {
     this.chart = new Chart('myChart', {
       type: 'doughnut',
@@ -20,7 +21,7 @@ export class DoughnutChartComponent {
         labels: ['Label 1', 'Label 2'],
         datasets: [
           {
-            data: data.chartData,
+            data: this.jsonArray,
             backgroundColor: [
               'rgb(10, 175, 144)',
               'rgb(1, 100, 144)'
