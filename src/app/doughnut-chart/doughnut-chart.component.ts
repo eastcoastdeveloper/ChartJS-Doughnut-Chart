@@ -2,7 +2,7 @@ import { Component, ElementRef,  Input,  OnInit, ViewChild } from '@angular/core
 import { ChartType, Chart } from 'chart.js';
 
 @Component({
-  selector: 'app-doughnut-chart',
+  selector: 'doughnut-chart',
   templateUrl: './doughnut-chart.component.html',
   styleUrls: ['./doughnut-chart.component.scss']
 })
@@ -48,5 +48,6 @@ export class DoughnutChartComponent {
         }
       }
     })
+    console.log(this.chart)
   }
 }

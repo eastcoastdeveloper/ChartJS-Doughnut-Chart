@@ -7,13 +7,7 @@ import * as data from './data.json';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  name = 'Angular';
-
-  @ViewChild('test', {static: false}) testElem: ElementRef
 
   ngOnit(){}
 
-  ngAfterViewInit(){
-    this.testElem.nativeElement.innerHTML = data;
-  }
 }
