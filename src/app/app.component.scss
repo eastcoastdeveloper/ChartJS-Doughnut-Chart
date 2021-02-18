@@ -1,0 +1,10 @@
+p {
+  font-family: Lato;
+}
+
+.content {
+  > div {
+    width: 300px;
+    margin: 30px auto;
+  }
+}

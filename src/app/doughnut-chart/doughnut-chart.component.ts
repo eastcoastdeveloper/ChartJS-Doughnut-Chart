@@ -11,14 +11,14 @@ export class DoughnutChartComponent {
 
   chart:any;
   @ViewChild('dChart', {static:false}) dChart:ElementRef;
-  @Input() jsonArray:any;
+  @Input() jsonArray:any = [25,15,20,15,30]
   @Input() cutOut:number = 75;
-  @Input() backgroundColors: any = ['rgb(100,100,100)', 'rgb(130,130,130)', 'rgb(160,160,160)', 'rgb(190,190,190)', 'rgb(220,220,220)']
+  @Input() backgroundColors: any = ['#E15D44', '#55B4B0', '#DFCFBE', '#9B2335', '#5B5EA6']
 
   ngAfterViewInit() {
     let cvs:any;
         cvs = this.dChart.nativeElement;
-    this.dChart = new Chart(cvs, {
+    this.chart = new Chart(cvs, {
       type: 'doughnut',
       data: {
         labels: ["label 1", "label 2", "label 3", "label 4", "label 5"],
@@ -32,7 +32,7 @@ export class DoughnutChartComponent {
       options: {
         responsive: false,
         legend: {
-          display: true,
+          display: false,
         },
         cutoutPercentage: this.cutOut,
         tooltips: {
