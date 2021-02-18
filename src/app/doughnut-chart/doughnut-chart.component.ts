@@ -1,4 +1,4 @@
-import { Component, Input,  OnInit } from '@angular/core';
+import { Component, ElementRef,  Input,  OnInit, ViewChild } from '@angular/core';
 import { ChartType, Chart } from 'chart.js';
 
 @Component({
@@ -10,43 +10,43 @@ import { ChartType, Chart } from 'chart.js';
 export class DoughnutChartComponent {
 
   chart:any;
-  showcaseVal:number;
-
+  @ViewChild('dChart', {static:false}) dChart:ElementRef;
   @Input() jsonArray:any;
+  @Input() cutOut:number = 75;
+  @Input() backgroundColors: any = ['rgb(100,100,100)', 'rgb(130,130,130)', 'rgb(160,160,160)', 'rgb(190,190,190)', 'rgb(220,220,220)']
 
   ngAfterViewInit() {
-    this.chart = new Chart('myChart', {
+    let cvs:any;
+        cvs = this.dChart.nativeElement;
+    this.dChart = new Chart(cvs, {
       type: 'doughnut',
       data: {
-        labels: ['Label 1', 'Label 2'],
-        datasets: [
-          {
-            data: this.jsonArray,
-            backgroundColor: [
-              'rgb(10, 175, 144)',
-              'rgb(1, 100, 144)'
-            ],
-            hoverBackgroundColor: [
-              'rgba(10, 175, 144,.8)',
-              'rgba(1, 100, 144,.8)'
-            ],
-            borderColor: "darkgrey",
-            borderWidth: 0,
-            fill: true
-          }
-        ]
+        labels: ["label 1", "label 2", "label 3", "label 4", "label 5"],
+        datasets: [{
+          data: this.jsonArray,
+          backgroundColor: this.backgroundColors,
+          fill: false,
+          borderWidth: 0
+        }]
       },
       options: {
-        elements: {},
-        cutoutPercentage: 55,
+        responsive: false,
         legend: {
-          display: false
+          display: true,
         },
-        tooltips:{
-          enabled: true
+        cutoutPercentage: this.cutOut,
+        tooltips: {
+          enabled: false
+        },
+        layout: {
+          padding: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0
+          }
         }
       }
     })
-    this.showcaseVal = this.chart.config.data.datasets[0].data[1];
   }
 }
